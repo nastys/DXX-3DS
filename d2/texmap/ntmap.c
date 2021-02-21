@@ -55,7 +55,7 @@ int	Interpolation_method=0;	// 0 = choose best method
 int     Lighting_on=1;                  // initialize to no lighting
 int	Tmap_flat_flag = 0;		//	1 = render texture maps as flat shaded polygons.
 int	Current_seg_depth;		// HACK INTERFACE: how far away the current segment (& thus texture) is
-int	Max_perspective_depth;
+int	Max_perspective_depth2;
 int	Max_flat_depth;
 
 // These variables are the interface to assembler.  They get set for each texture map, which is a real waste of time.
@@ -971,7 +971,7 @@ void draw_tmap(grs_bitmap *bp,int nverts,g3s_point **vertbuf)
 		switch (Interpolation_method) {	// 0 = choose, 1 = linear, 2 = /8 perspective, 3 = full perspective
 			case 0:								// choose best interpolation
 				per2_flag = 1;
-				if (Current_seg_depth > Max_perspective_depth)
+				if (Current_seg_depth > Max_perspective_depth2)
 					ntexture_map_lighted_linear(bp, &Tmap1);
 				else
 					ntexture_map_lighted(bp, &Tmap1);
@@ -995,7 +995,7 @@ void draw_tmap(grs_bitmap *bp,int nverts,g3s_point **vertbuf)
 		switch (Interpolation_method) {	// 0 = choose, 1 = linear, 2 = /8 perspective, 3 = full perspective
 			case 0:								// choose best interpolation
 				per2_flag = 1;
-				if (Current_seg_depth > Max_perspective_depth)
+				if (Current_seg_depth > Max_perspective_depth2)
 					ntexture_map_lighted_linear(bp, &Tmap1);
 				else
 					ntexture_map_lighted(bp, &Tmap1);

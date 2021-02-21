@@ -64,3 +64,8 @@ d*x-rebirth
 *.nro
 *.nso
 *.pfs0
+
+# 3DS
+*.3dsx
+*.smdh
+*.cia
